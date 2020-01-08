@@ -12,6 +12,7 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'
     implementation 'mysql:mysql-connector-java'
@@ -46,6 +47,9 @@ task testMigrate(type: FlywayMigrateTask) {
 bootRun.environment([
         "WELCOME_MESSAGE": "howdy",
         "PORT": "8675",
+        "MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE": "*",
+        "MANAGEMENT_ENDPOINT_HEALTH_SHOWDETAILS": "always",
+        "MANAGEMENT_HEALTH_PROBES_ENABLED": true,
 
 ])
 
@@ -55,4 +59,9 @@ test.environment([
         "MEMORY_LIMIT": "12G",
         "CF_INSTANCE_INDEX": "34",
         "CF_INSTANCE_ADDR": "123.sesame.street",
+        "MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE": "*",
 ])
+
+springBoot {
+    buildInfo()
+}
