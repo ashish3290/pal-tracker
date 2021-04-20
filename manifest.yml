@@ -4,7 +4,7 @@ applications:
     path: build/libs/pal-tracker.jar
     random-route: true
     routes:
-    - route: pal-tracker-${UNIQUE_IDENTIFIER}.${DOMAIN}
+    - route: pal-tracker-ashish.apps.evans.pal.pivotal.io/
     env:
       WELCOME_MESSAGE: Hello from Cloud Foundry
       JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ } }'
